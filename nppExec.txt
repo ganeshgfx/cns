@@ -1,0 +1,5 @@
+npp_save
+cd "$(CURRENT_DIRECTORY)"
+gcc -o "$(NAME_PART).exe" "$(FULL_CURRENT_PATH)"
+
+"$(NAME_PART).exe"

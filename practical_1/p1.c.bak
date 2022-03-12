@@ -1,0 +1,8 @@
+#include<stdio.h>
+void main(){
+	printf("\n");
+	
+	printf("Hell0");
+	
+	printf("\n\n");
+}
