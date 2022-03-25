@@ -1,30 +1,23 @@
-#include<stdio.h>
-#include<conio.h>
+#include <stdio.h>
+#include <conio.h>
 
-void main(){
+void main()
+{
 
 	char key[50] = "PASSWORD";
 
 	char keyMatrix[5][5] = {
-		{'\n','\n','\n','\n','\n'},
-		{'\n','\n','\n','\n','\n'},
-		{'\n','\n','\n','\n','\n'},
-		{'\n','\n','\n','\n','\n'},
-		{'\n','\n','\n','\n','\n'}
-	};
+		{'a', 'b', 'c', 'd', 'e'},
+		{'f', 'g', 'h', 'i', 'k'},
+		{'l', 'm', 'n', 'o', 'p'},
+		{'q', 'r', 's', 't', 'u'},
+		{'v', 'w', 'x', 'y', 'z'}};
 
-	for(int i = 0; i < 5; i++) {
-		for(int j = 0; j < 5; j++) {
-
-			for(int k = 0; k < 5; k++) {
-				for(int l = 0; l < 5; l++) {
-
-
-
-				}
-			}
-
+	for (int i = 0; i < 5; i++)
+	{
+		for (int j = 0; j < 5; j++)
+		{
+			printf("%c", keyMatrix[i][j]);
 		}
 	}
-
 }
