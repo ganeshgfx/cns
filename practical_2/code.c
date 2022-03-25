@@ -1,12 +1,10 @@
 #include<stdio.h>
 #include<conio.h>
 
-void makeKeyMatrix(char keyMatrix[5][5],char key[50]){
-	//printf("%s",key);
-}
-
 void main(){
-	char key[] = "PASSWORD";
+
+	char key[50] = "PASSWORD";
+
 	char keyMatrix[5][5] = {
 		{'\n','\n','\n','\n','\n'},
 		{'\n','\n','\n','\n','\n'},
@@ -14,11 +12,19 @@ void main(){
 		{'\n','\n','\n','\n','\n'},
 		{'\n','\n','\n','\n','\n'}
 	};
-	printf("%s",key);
+
+	for(int i = 0; i < 5; i++) {
+		for(int j = 0; j < 5; j++) {
+
+			for(int k = 0; k < 5; k++) {
+				for(int l = 0; l < 5; l++) {
 
 
 
-	printf("\nInput : ");
-	scanf("%s",&key);
-	makeKeyMatrix(keyMatrix,key);
+				}
+			}
+
+		}
+	}
+
 }

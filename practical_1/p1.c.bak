@@ -16,6 +16,7 @@ void main(){
 		{'\n','\n','\n','\n','\n'},
 		{'\n','\n','\n','\n','\n'}
 	};
+	
 	 makeKeyMatrix(keyMatrix,key);
 	
 	printf("\n\n");
