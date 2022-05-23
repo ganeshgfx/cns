@@ -1,60 +1,65 @@
+
 #include <stdio.h>
-#include <conio.h>
 #include <math.h>
-int gcd(int a, int b)
+#include <conio.h>
+// Returns gcd of a and b
+int gcd(int a, int h)
 {
-	int i, c;
-	for (i = 1; i <= a && i <= b; i++)
+	int temp;
+	while (1)
 	{
-		if (a % i == 0 && b % i == 0)
-		{
-			c = i;
-		}
+		temp = a % h;
+		if (temp == 0)
+			return h;
+		a = h;
+		h = temp;
 	}
-	return c;
 }
-void main()
+
+// Code to demonstrate RSA algorithm
+int main()
 {
-	int p, q, n, f, e, d, s, msg;
-	long enc, dec;
-	clrscr();
-	printf("Enter 1st prime number ==> ");
-	scanf("%d", &p);
-	printf("Enter 2nd prime number ==> ");
-	scanf("%d", &q);
-	n = p * q;
-	f = (p - 1) * (q - 1);
-	printf("\nn ==> %d", n);
-	printf("\nf ==> %d", f);
-	printf("\n\nEnter public key e ==> ");
-	scanf("%d", &e);
-	while (e < f)
+	// Two random prime numbers
+	double p = 3;
+	double q = 7;
+
+	// First part of public key:
+	double n = p * q;
+
+	// Finding other part of public key.
+	// e stands for encrypt
+	double e = 2;
+	double phi = (p - 1) * (q - 1);
+	while (e < phi)
 	{
-		if (gcd(e, f) == 1)
-		{
+		// e must be co-prime to phi and
+		// smaller than phi.
+		if (gcd(e, phi) == 1)
 			break;
-		}
 		else
-		{
 			e++;
-		}
 	}
-	d = 1;
-	do
-	{
-		s = (d * e) % f;
-		d++;
-	} while (s != 1);
-	d = d - 1;
-	printf("\nPublic Key is {%d,%d}", e, n);
-	printf("\nPrivate Key is {%d,%d}", d, n);
-	printf("\n\nEnter your Messege ==> ");
-	scanf("%d", &msg);
-	enc = pow(msg, e);
-	enc = fmod(enc, n);
-	dec = pow(enc, d);
-	dec = fmod(dec, n);
-	printf("\nEncryption ==> %ld", enc);
-	printf("\nDecryption ==> %ld", dec);
+
+	// Private key (d stands for decrypt)
+	// choosing d such that it satisfies
+	// d*e = 1 + k * totient
+	int k = 2; // A constant value
+	double d = (1 + (k * phi)) / e;
+
+	// Message to be encrypted
+	double msg = 12;
+
+	printf("Message data = %lf", msg);
+
+	// Encryption c = (msg ^ e) % n
+	double c = pow(msg, e);
+	c = fmod(c, n);
+	printf("\nEncrypted data = %lf", c);
+
+	// Decryption m = (c ^ d) % n
+	double m = pow(c, d);
+	m = fmod(m, n);
+	printf("\nOriginal Message Sent = %lf", m);
 	getch();
+	return 0;
 }
