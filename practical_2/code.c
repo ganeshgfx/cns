@@ -1,23 +1,30 @@
 #include <stdio.h>
 #include <conio.h>
-
+#include <string.h>
+// Mono alphabetic
 void main()
 {
+	char p[30], k[30], c[30];
+	int i, index, len;
 
-	char key[50] = "PASSWORD";
+	printf("Enter PlainText ==> ");
+	gets(p);
+	len = strlen(p);
+	printf("\nEnter Key ==>");
 
-	char keyMatrix[5][5] = {
-		{'a', 'b', 'c', 'd', 'e'},
-		{'f', 'g', 'h', 'i', 'k'},
-		{'l', 'm', 'n', 'o', 'p'},
-		{'q', 'r', 's', 't', 'u'},
-		{'v', 'w', 'x', 'y', 'z'}};
-
-	for (int i = 0; i < 5; i++)
+	for (i = 0; i < 26; i++)
 	{
-		for (int j = 0; j < 5; j++)
-		{
-			printf("%c", keyMatrix[i][j]);
-		}
+		printf("\t");
+		printf("%c->", i + 97);
+		k[i] = getch();
+		printf("%c", k[i]);
 	}
+	for (i = 0; i < len; i++)
+	{
+		index = p[i] - 97;
+		c[i] = k[index];
+	}
+	c[i] = '\0';
+	printf("\n\nYour cipher text is ==> %s", c);
+	getch();
 }

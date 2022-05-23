@@ -1,2 +1,2 @@
 gcc code.c
-a
+./a
