@@ -1,2 +1,0 @@
-gcc code.c
-a

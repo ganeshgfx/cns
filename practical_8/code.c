@@ -1,26 +1,43 @@
-#include<stdio.h>
-#include<conio.h>
-#include<string.h>
+#include <stdio.h>
+#include <conio.h>
+#include <string.h>
+// Rail Fence Cipher
 void main()
 {
-	char p[30],c[30],k[30];
-	int i,j=0,len;
-	
-	printf("Enter PlainText ==> ");
-	gets(p);
+	char msg[20], ans[20][20];
+	int row = 0, col = 0, k = -1, key, msglen, i, j;
+	// clrscr();
+	printf("Enter MSG ==> ");
+	gets(msg);
 	printf("Enter Key ==> ");
-	gets(k);
-	len=strlen(k);
-	for(i=0;p[i]!='\0';i++)
+	scanf("%d", &key);
+	msglen = strlen(msg);
+	for (i = 0; i < key; i++)
 	{
-		c[i]=((p[i]+k[j])%26)+'a';
-		j++;
-		if(j==len)
+		for (j = 0; j < msglen; j++)
 		{
-			j=0;
+			ans[i][j] = '\n';
 		}
 	}
-	c[i]='\0';
-	printf("\nCipher text is %s",c);
+	for (i = 0; i < msglen; i++)
+	{
+		ans[row][col++] = msg[i];
+		if (row == 0 || row == key - 1)
+		{
+			k = k * (-1);
+		}
+		row = row + k;
+	}
+	printf("Cipher text ==> ");
+	for (i = 0; i < key; i++)
+	{
+		for (j = 0; j < msglen; j++)
+		{
+			if (ans[i][j] != '\n')
+			{
+				printf("%c", ans[i][j]);
+			}
+		}
+	}
 	getch();
 }

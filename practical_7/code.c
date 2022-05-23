@@ -1,26 +1,20 @@
-#include<stdio.h>
-#include<conio.h>
-#include<string.h>
+#include <stdio.h>
+#include <conio.h>
+// Simple Hash function
 void main()
 {
-	char p[30],c[30],k[30];
-	int i,j=0,len;
-	
-	printf("Enter PlainText ==> ");
-	gets(p);
-	printf("Enter Key ==> ");
-	gets(k);
-	len=strlen(k);
-	for(i=0;p[i]!='\0';i++)
+	char ip1[20], ip2[20], ans;
+	int i, j;
+	// clrscr();
+	printf("Enter First block Input ==> ");
+	gets(ip1);
+	printf("Enter First block Input ==> ");
+	gets(ip2);
+	printf("Answer ==>");
+	for (i = 0; i < 8; i++)
 	{
-		c[i]=((p[i]+k[j])%26)+'a';
-		j++;
-		if(j==len)
-		{
-			j=0;
-		}
+		ans = ip1[i] ^ ip2[i];
+		printf("%d", ans);
 	}
-	c[i]='\0';
-	printf("\nCipher text is %s",c);
 	getch();
 }

@@ -1,26 +1,57 @@
-#include<stdio.h>
-#include<conio.h>
-#include<string.h>
+#include <stdio.h>
+#include <conio.h>
+// t S-DES key generation
 void main()
 {
-	char p[30],c[30],k[30];
-	int i,j=0,len;
-	
-	printf("Enter PlainText ==> ");
-	gets(p);
-	printf("Enter Key ==> ");
-	gets(k);
-	len=strlen(k);
-	for(i=0;p[i]!='\0';i++)
+	int i, cnt = 0, p8[8] = {6, 7, 8, 9, 1, 2, 3, 4};
+	int p10[10] = {6, 7, 8, 9, 10, 1, 2, 3, 4, 5};
+	char input[11], k1[10], k2[10], temp[11];
+	char LS1[5], LS2[5];
+	// clrscr();
+	printf("Enter 10 bits input ==> ");
+	scanf("%s", input);
+	input[10] = '\0';
+	for (i = 0; i < 10; i++)
 	{
-		c[i]=((p[i]+k[j])%26)+'a';
-		j++;
-		if(j==len)
-		{
-			j=0;
-		}
+		cnt = p10[i];
+		temp[i] = input[cnt - 1];
 	}
-	c[i]='\0';
-	printf("\nCipher text is %s",c);
+	temp[i] = '\0';
+	printf("\nYour p10 key is :");
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d,", p10[i]);
+	}
+	printf("\nBits after p10 :");
+	puts(temp);
+	for (i = 0; i < 5; i++)
+	{
+		if (i == 4)
+			temp[i] = temp[0];
+		else
+			temp[i] = temp[i + 1];
+	}
+	for (i = 5; i < 10; i++)
+	{
+		if (i == 9)
+			temp[i] = temp[5];
+		else
+			temp[i] = temp[i + 1];
+	}
+	printf("Output after LS-1 :");
+	puts(temp);
+	printf("\nYour p8 key is :");
+	for (i = 0; i < 8; i++)
+	{
+		printf("%d,", p8[i]);
+	}
+	for (i = 0; i < 8; i++)
+	{
+		cnt = p8[i];
+		k1[i] = temp[cnt - 1];
+	}
+	k1[i] = '\0';
+	printf("\nYour key k1 is :");
+	puts(k1);
 	getch();
 }

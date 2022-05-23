@@ -1,26 +1,31 @@
-#include<stdio.h>
-#include<conio.h>
-#include<string.h>
+#include <stdio.h>
+#include <conio.h>
+#include <math.h>
+// t Diffie Hellman
 void main()
 {
-	char p[30],c[30],k[30];
-	int i,j=0,len;
-	
-	printf("Enter PlainText ==> ");
-	gets(p);
-	printf("Enter Key ==> ");
-	gets(k);
-	len=strlen(k);
-	for(i=0;p[i]!='\0';i++)
-	{
-		c[i]=((p[i]+k[j])%26)+'a';
-		j++;
-		if(j==len)
-		{
-			j=0;
-		}
-	}
-	c[i]='\0';
-	printf("\nCipher text is %s",c);
+	int q, Xa, Xb, Yb, Kb, alpha, Ya;
+	long Ka;
+	// clrscr();
+	printf("Enter Prime number q ==> ");
+	scanf("%d", &q);
+	printf("Enter alpha which is primitive root of q ==> ");
+	scanf("%d", &alpha);
+	printf("Enter random private number of USER A which is less than q ==> ");
+	scanf("%d", &Xa);
+	Ya = pow(alpha, Xa);
+	Ya = fmod(Ya, q);
+	printf("\nPublic Key of USER A is %d ", Ya);
+	printf("\n\nEnter random private number of USER B which is less than q ==> ");
+	scanf("%d", &Xb);
+	Yb = pow(alpha, Xb);
+	Yb = fmod(Yb, q);
+	printf("\nPublic Key of USER B is %d ", Yb);
+	Ka = pow(Yb, Xa);
+	Ka = fmod(Ka, q);
+	printf("\n\nUSER A Secret key is %ld ", Ka);
+	Kb = pow(Ya, Xb);
+	Kb = fmod(Kb, q);
+	printf("\nUSER B Secret key is %d ", Kb);
 	getch();
 }
